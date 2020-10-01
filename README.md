@@ -2,8 +2,8 @@
 ## Contacts  
  Code developed by Rahul S. Yerrabelli<sup>1,\*</sup> in the lab of Nai-Kong V. Cheung, MD, PhD<sup>1</sup>.  
  <sup>1</sup>Memorial Sloan Kettering Cancer Center, New York, NY, USA.  
- <sup>\*</sup>Current address is at Carle Illinois College of Medicine, Urbana, IL, USA.
- Jul 2017 - Oct 2020.  
+ <sup>\*</sup>Current address is at Carle Illinois College of Medicine, Urbana, IL, USA.  
+ The modeling project spanned Jul 2017 - Oct 2020.  
 
 
 ## Background  
