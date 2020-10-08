@@ -41,6 +41,8 @@
 * **[solveModelMultInfus.m](solveModelMultInfus.m)** is another wrapper function for **[ModOde2.m](ModOde2.m)**, similar to **[solveModel.m](solveModel.m)**, except that **[solveModelMultInfus.m](solveModelMultInfus.m)** allows input of multiple infusion times with varying infusion amounts.
   * **[SplitDosage.mlx](+Simulations/SplitDosage.mlx)** file is a .mlx file I used to create the dose fractionation figures and are provided as a good example to learn how to run the **[solveModelMultInfus.m](solveModelMultInfus.m)** (it is also another chance to see how **[DefaultValues.m](+Simulations/DefaultValues.m)** is used).  
   * **[solveModelMultInfus.m](solveModelMultInfus.m)** does not call **[solveModel.m](solveModel.m)**. However, both **[solveModelMultInfus.m](solveModelMultInfus.m)** and **[solveModel.m](solveModel.m)** call **[ModOde2.m](ModOde2.m)** as well as do the pre-processing and post-processing steps around it, in order to represent the running of the model.
+  * There are several example code files given in the +Simulations folder. I recommend starting with **[Dosage.mlx](+Simulations/Dosage.mlx)**. In the event that MATLAB® in the future does not support .mlx files, I also put the majority of its code in a **[Dosage.m](+Simulations/Dosage.m)** file that can be read in any text editor.
+  
 
 
 ## Tested OS and History Details  
