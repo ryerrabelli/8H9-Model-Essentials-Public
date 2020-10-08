@@ -8,11 +8,11 @@
 )<sup>1</sup>.  
  1. [Memorial Sloan Kettering Cancer Center, New York, NY, USA](https://www.mskcc.org/research-areas/labs/nai-kong-cheung)  
  1. [Carle Illinois College of Medicine, University of Illinois at Urbana-Champaign, Urbana, IL, USA](https://medicine.illinois.edu/).  
- 
+
 
 
 ## Background  
-* The code here is what I used to create the analyses in our manuscript, which was accepted for publication on Sep 19, 2020 to European Journal of Nuclear Medicine and Molecular Imaging (EJNMMI). The manuscript title is ["Intra-Ommaya Compartmental Radioimmunotherapy using <sup>131</sup>I-Omburtamab— Pharmacokinetic Modeling to Optimize Therapeutic Index" by Rahul S. Yerrabelli, Ping He, Edward K. Fung, Kim Kramer, Pat B. Zanzonico, John L. Humm, Hongfen Guo, Neeta Pandit-Taskar, Steven M. Larson, Nai-Kong V. Cheung. doi:10.1007/s00259-020-05050-z](https://doi.org/10.1007/s00259-020-05050-z)  
+* The code here is what I used to create the analyses in our manuscript, which was accepted for publication on Sep 19, 2020 to European Journal of Nuclear Medicine and Molecular Imaging (EJNMMI). The manuscript title is ["**Intra-Ommaya Compartmental Radioimmunotherapy using <sup>131</sup>I-Omburtamab— Pharmacokinetic Modeling to Optimize Therapeutic Index**" by Rahul S. Yerrabelli, Ping He, Edward K. Fung, Kim Kramer, Pat B. Zanzonico, John L. Humm, Hongfen Guo, Neeta Pandit-Taskar, Steven M. Larson, Nai-Kong V. Cheung. doi:10.1007/s00259-020-05050-z](https://doi.org/10.1007/s00259-020-05050-z)  
 * Specifically, the supplemental material of the manuscript contains the technical details for the model and code.
 * Please reach out if you have questions or would like to learn more.  
 * The modeling project spanned Jul 2017 - Sep 2020.  
@@ -29,13 +29,19 @@
 
 
 ## Instructions for Understanding the Model's MATLAB® Code  
-* The differential equations themselves are provided in _ModOde.m_. 
-* However, I recommend running _solveModel.m_ instead, which is a wrapper function that does a multitude of extra pre-processing and post-processing steps (for example calculating AUC). This file is located in the +Simulations folder.
-* _DefaultValues.m_ also in the +Simulations folder is meant to be run before any other code is run because it defines the default variables (which can be customized in other files, but should not be changed in _DefaultValues.m_). 
-* _Dosage.mlx_ file is a .mlx file I used to create the dosage response figures and are provided as a good example to learn how to run the _solveModel.m_ and _DefaultValues.m files_.  
-* Similar to _solveModel.m_, _solveModelMultInfus.m_ is another wrapper function for _ModOde.m_, except that it allows input of multiple infusion times with varying infusion amounts. _SplitDosage.mlx_ file is a .mlx file I used to create the dose fractionation figures and are provided as a good example to learn how to run the _solveModelMultInfus.m_ (it is also another chance to see how _DefaultValues.m_) is used).  
+* All files that are **NOT** integral to running the model itself are in the +Simulations folder.
+  * Another way of saying it is that if you were trying to fit the model instead of running the model, then you don't need those files in +Simulations.
+  * Those files are only for simulating the model.
+  * All code files outside the +Simulations folder (i.e. all code files in the top level folder) represent the model itself.
+* **[DefaultValues.m](+Simulations/DefaultValues.m)** in the +Simulations folder is meant to be run before any other code is run because it defines the default variables (which can be customized in other files, but should not be changed in **[DefaultValues.m](+Simulations/DefaultValues.m)**).
+  * This file does not return anything. It only sets up variables.
+* The differential equations themselves are provided in **[ModOde.m](ModOde.m)**.
+* However, I recommend running **[solveModel.m](solveModel.m)** instead of running **[ModOde.m](ModOde.m)** directly. **[solveModel.m](solveModel.m)** is a wrapper function around  **[ModOde.m](ModOde.m)** that does a multitude of extra pre-processing and post-processing steps (for example calculating AUC) for it.
+  * **[Dosage.mlx](+Simulations/Dosage.mlx)** file is a .mlx file I used to create the dosage response figures and are provided as a good example to learn how to run the **[solveModel.m](solveModel.m)** and **[DefaultValues.m](+Simulations/DefaultValues.m)** files.  
+* **[solveModelMultInfus.m](solveModelMultInfus.m)** is another wrapper function for **[ModOde.m](ModOde.m)**, similar to **[solveModel.m](solveModel.m)**, except that **[solveModelMultInfus.m](solveModelMultInfus.m)** allows input of multiple infusion times with varying infusion amounts.
+  * **[SplitDosage.mlx](+Simulations/SplitDosage.mlx)**_ file is a .mlx file I used to create the dose fractionation figures and are provided as a good example to learn how to run the **[solveModelMultInfus.m](solveModelMultInfus.m)** (it is also another chance to see how **[DefaultValues.m](+Simulations/DefaultValues.m)** is used).  
+  * **[solveModelMultInfus.m](solveModelMultInfus.m)** does not call **[solveModel.m](solveModel.m)**. However, both **[solveModelMultInfus.m](solveModelMultInfus.m)** and **[solveModel.m](solveModel.m)** call **[ModOde.m](ModOde.m)** as well as do the pre-processing and post-processing steps around it, in order to represent the running of the model.
 
- 
 
 ## Tested OS and History Details  
 * Language used is MATLAB® Version 2017a on a personal Mac computer (macOS Mojave, 2018 MacBook Pro 15in).  
